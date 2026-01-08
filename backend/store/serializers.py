@@ -19,8 +19,9 @@ class SaleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sale
-        fields = ['id', 'product', 'product_name', 'month', 'quantity', 'total_price']
+        # Certifique-se de que 'date' é o nome real no seu models.py
+        fields = ['id', 'product', 'product_name', 'month', 'quantity', 'total_price', 'date']
 
     def get_month(self, obj):
-        # Retorna o nome do mês baseado na sale_date
-        return obj.sale_date.strftime('%B')
+        # Usando obj.date em vez de sale_date
+        return obj.date.strftime('%B')
