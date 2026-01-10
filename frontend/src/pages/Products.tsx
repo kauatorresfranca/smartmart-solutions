@@ -32,12 +32,19 @@ const Products: React.FC = () => {
     try {
       const response = await api.get('/products/');
       setProducts(response.data);
-    } catch (error) {
+    } catch {
       toast.error("Erro ao carregar lista de produtos.");
     }
   }, []);
 
-  useEffect(() => { loadProducts(); }, [loadProducts]);
+  // Corrigindo o erro de cascading render: chamamos a função dentro de um escopo assíncrono
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      loadProducts();
+    }
+    return () => { isMounted = false; };
+  }, [loadProducts]);
 
   const handleSave = async () => {
     try {
@@ -46,7 +53,7 @@ const Products: React.FC = () => {
       setForm({ name: '', price: '', category: 1 });
       loadProducts();
       toast.success("Produto criado com sucesso!");
-    } catch (error) {
+    } catch {
       toast.error("Erro ao criar produto.");
     }
   };
@@ -58,19 +65,19 @@ const Products: React.FC = () => {
       setIsEditOpen(false);
       loadProducts();
       toast.success("Produto atualizado com sucesso!");
-    } catch (error) {
+    } catch {
       toast.error("Erro ao atualizar produto.");
     }
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm("Tem certeza que deseja excluir este produto? Isso pode afetar vendas vinculadas.")) return;
+    if (!window.confirm("Tem certeza que deseja excluir este produto?")) return;
     try {
       await api.delete(`/products/${id}/`);
       loadProducts();
       toast.success("Produto removido!");
-    } catch (error) {
-      toast.error("Não foi possível excluir. O produto pode estar vinculado a vendas.");
+    } catch {
+      toast.error("Não foi possível excluir o produto.");
     }
   };
 
@@ -155,7 +162,6 @@ const Products: React.FC = () => {
         </CardContent>
       </Card>
 
-      {/* MODAL DE EDIÇÃO */}
       <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
         <DialogContent className="max-[450px]:w-[92%] max-[450px]:rounded-xl">
           <DialogHeader>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Sidebar from "./components/sidebar/index";
-import Products from './pages/Products';
 import Sales from './pages/Sales';
+import Products from './pages/Products';
 import Dashboard from './pages/Dashboard';
 import { Toaster } from "@/components/ui/sonner";
 
