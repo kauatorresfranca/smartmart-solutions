@@ -1,42 +1,93 @@
-🛒 SmartMart Solutions - Fullstack Challenge
-Este projeto é uma plataforma completa para cadastro, visualização e análise de produtos e vendas. A solução integra um backend robusto em Django com uma interface moderna em React.
+# 🛒 SmartMart Solutions - Fullstack Challenge
 
-📂 Estrutura do Repositório
-/backend: API REST desenvolvida com Django REST Framework.
+Este projeto é uma plataforma completa para gestão e análise de vendas. A solução integra um ecossistema robusto com **Django REST Framework** no backend e uma interface moderna e responsiva em **React (Vite)** com **Tailwind CSS** e **Shadcn/UI**.
 
-/frontend: Interface do usuário desenvolvida com React e Vite.
+---
 
-/data: Arquivos CSV utilizados para a carga inicial de dados.
+## 🚀 Demonstração (Deploy)
+- **Frontend:** [Link do Vercel]
+- **Backend API:** [Link da Render]
 
-🚀 Como Executar o Projeto
-1. Backend (Django)
-Bash
+---
 
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+- **React + Vite** (Fast Refresh e Build otimizado)
+- **Tailwind CSS** (Estilização utilitária)
+- **Shadcn/UI** (Componentes de alta qualidade)
+- **Recharts** (Gráficos dinâmicos de performance)
+- **Lucide React** (Iconografia moderna)
+- **Sonner** (Notificações Toast profissionais)
+
+### Backend
+- **Django & DRF** (API REST robusta)
+- **SQLite** (Desenvolvimento) / **PostgreSQL** (Produção)
+- **WhiteNoise** (Gestão de arquivos estáticos em produção)
+- **CORS Headers** (Segurança na comunicação entre domínios)
+
+---
+
+## 📂 Estrutura do Repositório
+- `/backend`: API REST, Modelagem de dados e scripts de importação.
+- `/frontend`: Aplicação SPA com Dashboards e CRUDs.
+- `/data`: Datasets em CSV para carga inicial do sistema.
+
+---
+
+## ⚙️ Como Executar Localmente
+
+### 1. Backend (Django)
+```bash
+# Entre na pasta
 cd backend
+
+# Crie e ative o ambiente virtual
 python -m venv venv
-.\venv\Scripts\activate  # Windows
-pip install django djangorestframework django-cors-headers
+source venv/bin/activate  # Linux/Mac
+.\venv\Scripts\activate   # Windows
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Execute as migrações e importe os dados iniciais
 python manage.py migrate
-python manage.py import_data  # Popula o banco com os CSVs
+python manage.py import_data
+
+# Inicie o servidor
 python manage.py runserver
 2. Frontend (React)
 Bash
 
+# Entre na pasta
 cd frontend
+
+# Instale as dependências
 npm install
+
+# Inicie em modo de desenvolvimento
 npm run dev
-🛠️ Funcionalidades Implementadas
-Importação de Dados: Script customizado para leitura e tratamento de arquivos CSV.
+📡 Funcionalidades Principais
+Dashboard Inteligente: Gráficos de barras com filtros por intervalo de datas e métricas automáticas (Receita, Ticket Médio, Transações).
 
-API REST: Endpoints para CRUD de produtos e vendas usando Function-Based Views.
+CRUD de Produtos: Gerenciamento completo (Criar, Listar, Editar e Excluir) com feedback visual via Toasts.
 
-Análise de Dados: Endpoint especializado em métricas de faturamento e performance.
+Registro de Vendas: Interface intuitiva para registro de novas transações com cálculo automático de preços.
 
-Interface Responsiva: Visualização clara de tabelas e indicadores (a ser finalizado).
+Responsividade Total: Interface adaptada para Desktop, Tablets e Dispositivos Móveis (Sidebar vira Bottom Bar no celular).
 
-📡 Endpoints Principais
-GET/POST /api/products/: Gerenciamento de produtos.
+Importação Automatizada: Script para popular o banco de dados a partir de arquivos CSV legados.
 
-GET/POST /api/sales/: Gerenciamento de vendas.
+📡 Endpoints da API
+GET /api/products/ - Lista todos os produtos.
 
-GET /api/analysis/: Dashboard de métricas.
+POST /api/products/ - Cria um novo produto.
+
+PUT /api/products/<id>/ - Atualiza um produto.
+
+DELETE /api/products/<id>/ - Remove um produto.
+
+GET /api/analysis/?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD - Dashboard filtrável.
+
+👨‍💻 Desenvolvedor Kaua Torres
+Seu Nome - https://www.linkedin.com/in/kauatorres/ | https://portfolio-kaua-torres.vercel.app/

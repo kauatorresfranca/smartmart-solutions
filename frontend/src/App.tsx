@@ -25,7 +25,7 @@ function App() {
         </header>       
         
         {/* Conteúdo Dinâmico */}
-        <main className="max-w-7xl mx-auto">
+        <main className=" mx-auto">
           {activePage === 'dashboard' && <Dashboard/>}
           {activePage === 'products' && <Products/>}
           {activePage === 'sales' && <Sales/>}
