@@ -5,8 +5,13 @@ Este projeto é uma plataforma completa para gestão e análise de vendas. A sol
 ---
 
 ## 🚀 Demonstração (Deploy)
-- **Frontend:** [Link do Vercel]
-- **Backend API:** [Link da Render]
+- **Frontend:** https://smartmart-solutions.vercel.app/
+- **Backend API:** https://smartmart-solutions.onrender.com/
+
+### 📸 Screenshots
+| Dashboard Principal | Gestão de Produtos |
+|---|---|
+| ![Dashboard](./screenshots/dashboard.png) | ![Produtos](./screenshots/produtos.png) |
 
 ---
 
@@ -74,7 +79,7 @@ CRUD de Produtos: Gerenciamento completo (Criar, Listar, Editar e Excluir) com f
 
 Registro de Vendas: Interface intuitiva para registro de novas transações com cálculo automático de preços.
 
-Responsividade Total: Interface adaptada para Desktop, Tablets e Dispositivos Móveis (Sidebar vira Bottom Bar no celular).
+Responsividade Total: Interface adaptada para Desktop, Tablets e Dispositivos Móveis.
 
 Importação Automatizada: Script para popular o banco de dados a partir de arquivos CSV legados.
 
@@ -87,7 +92,9 @@ PUT /api/products/<id>/ - Atualiza um produto.
 
 DELETE /api/products/<id>/ - Remove um produto.
 
+GET /api/categories/ - Lista as categorias.
+
 GET /api/analysis/?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD - Dashboard filtrável.
 
-👨‍💻 Desenvolvedor Kaua Torres
-Seu Nome - https://www.linkedin.com/in/kauatorres/ | https://portfolio-kaua-torres.vercel.app/
+👨‍💻 Desenvolvedor
+Kauã Torres França LinkedIn | Portfolio
