@@ -3,7 +3,7 @@ import api from '@/services/api';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Download } from "lucide-react"; // Importe o ícone
+import { Download } from "lucide-react"; 
 import {
   Dialog,
   DialogContent,
@@ -14,7 +14,20 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from 'sonner';
 
-// ... (interfaces Sale e Product permanecem iguais)
+// ADICIONE ESTAS INTERFACES (O que causou o erro)
+interface Sale {
+  id: number;
+  product_name: string;
+  quantity: number;
+  total_price: string;
+  date: string;
+}
+
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+}
 
 const Sales: React.FC = () => {
   const [sales, setSales] = useState<Sale[]>([]);
@@ -41,7 +54,6 @@ const Sales: React.FC = () => {
 
   useEffect(() => { loadData(); }, [loadData]);
 
-  // FUNCIONALIDADE EXTRA: Exportar Vendas para CSV
   const handleExportCSV = () => {
     if (sales.length === 0) return toast.error("Sem vendas para exportar");
     const headers = ["Data", "Produto", "Quantidade", "Valor Total"];
@@ -58,7 +70,7 @@ const Sales: React.FC = () => {
     link.href = url;
     link.download = "relatorio_vendas.csv";
     link.click();
-    toast.success("CSV exportado com sucesso!");
+    toast.success("CSV exportado!");
   };
 
   const handleRegisterSale = async () => {
@@ -88,11 +100,10 @@ const Sales: React.FC = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">Vendas</h2>
-          <p className="text-sm text-slate-500">Histórico de movimentações da loja.</p>
+          <p className="text-sm text-slate-500">Histórico de movimentações.</p>
         </div>
 
         <div className="flex gap-2 w-full sm:w-auto">
-          {/* Botão de Exportar CSV */}
           <Button variant="outline" onClick={handleExportCSV} className="flex-1 sm:flex-none gap-2">
             <Download size={16} /> Exportar
           </Button>
@@ -130,14 +141,14 @@ const Sales: React.FC = () => {
       </div>
 
       <Card>
-        <CardContent className="p-0 sm:p-6 pt-0">
+        <CardContent className="p-0 sm:p-6">
           <div className="w-full overflow-x-auto border-t sm:border sm:rounded-md">
             <table className="w-full min-w-[550px] text-sm text-left">
               <thead className="bg-slate-50 border-b text-slate-500">
                 <tr>
                   <th className="p-4">Data</th>
                   <th className="p-4">Produto</th>
-                  <th className="p-4">Qtd</th>
+                  <th className="p-4 text-center">Qtd</th>
                   <th className="p-4 text-right">Total</th>
                 </tr>
               </thead>
@@ -146,7 +157,7 @@ const Sales: React.FC = () => {
                   <tr key={sale.id} className="hover:bg-slate-50/50">
                     <td className="p-4 text-slate-500">{formatDate(sale.date)}</td>
                     <td className="p-4 font-semibold text-slate-900">{sale.product_name}</td>
-                    <td className="p-4">{sale.quantity}x</td>
+                    <td className="p-4 text-center">{sale.quantity}x</td>
                     <td className="p-4 text-right font-bold text-green-600">
                       {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(sale.total_price))}
                     </td>
