@@ -11,7 +11,7 @@ Este projeto é uma plataforma completa para gestão e análise de vendas. A sol
 ### 📸 Screenshots
 | Dashboard Principal | Gestão de Produtos |
 |---|---|
-| ![Dashboard](./screenshots/dashboard.png) | ![Produtos](./screenshots/produtos.png) |
+| ![Dashboard](./screenshots/dashboard.png) | ![Produtos](./screenshots/products.png) |
 
 ---
 
